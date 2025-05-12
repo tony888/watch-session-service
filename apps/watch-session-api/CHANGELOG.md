@@ -1,0 +1,232 @@
+# [watch-session-service-api-v1.1.0](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/compare/api-1.0.0...api-1.1.0) (2025-01-24)
+
+
+### Features
+
+* update bun lockfile ([678ae06](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/678ae06aaa3964d8745e047c9412479ffbccc397))
+
+# watch-session-service-api-v1.0.0 (2025-01-23)
+
+
+### Bug Fixes
+
+* **api:** change expirationTime type to unix timestamp ([c615203](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/c615203d0d2096e785bce601462a2aeac01e5a7f))
+* **api:** fix cannot create new session and improve exception handling ([bfcc3e8](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/bfcc3e82c2ed132bff98b299e47a62edf1237f5d))
+* **api:** fix cannot recreate terminated session ([09f1062](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/09f1062216cfbc8f0bb18bcf02c255cfa8d63da3))
+* **api:** fix watchedDate filter to delete history ([0ecf4c7](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/0ecf4c706334a3956b058ca85e923c51cce6c42c))
+* **api:** pass environment variable to docker build ([af998d5](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/af998d570cc5c82e8655b02617023034e96baa4a))
+* **api:** refactor session handling and validation ([9b2ecc4](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/9b2ecc45398f04d816aee2b37676936b27098ebe))
+* **db:** change delimiter from hyphen to hash ([d9deee5](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/d9deee5373c9144eaf26f264f31f986b8956c56f))
+* ensure unique session IDs across time ([42b805e](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/42b805e520841f410ba5f3633b2bef446da259eb))
+* error git tag name ([15c4c54](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/15c4c54b58710710fd98bf7eb9091fc179f24373))
+* filter completed items from continue watching ([63d076c](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/63d076cdbff96f17322f3c9830b00c15d838ad8a))
+* git tag format ([767bafd](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/767bafd0594a94979d37ed44948bedab5d296740))
+* package path ([eecc67d](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/eecc67d4a4134bbd73226cca6606a4f89d53ee4d))
+* return 404 for empty continue watching data ([3608b76](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/3608b76b5a3b46c7bb426ceebda70f2482505e40))
+* tag name ([12ff611](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/12ff61158cf20d502b89c07983f9dbf5dd10d09a))
+* test merge main ([97af96f](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/97af96f157c430b2d50561cd08dc08a516e07784))
+* test merge main ([3b01bdb](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/3b01bdbb826f0833ae423353d33f7db60cbb97e5))
+* test semantic version ([e98967c](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/e98967c14167f6c0f3f66045936f02119885372a))
+* test tag ([4ace4a4](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/4ace4a4b34563028fce2906f03f53afadebb2785))
+* update API base URL and add content section field ([9911fee](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/9911fee1a33b122eeb38cd70825d9977bd3f97c0))
+* update config semantic mono repo ([57853f6](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/57853f6011ee2c902da31bd436ffc9836a447a6a))
+* update package json ([04834bc](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/04834bc54d0dd700356802c27de375b5f8bc6263))
+* update version ([5c40cd1](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/5c40cd1e6e0f07dc60af871c69960bc4ebf5aee9))
+
+
+### Features
+
+* add content type and event type to watch history ([1ea5c8a](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/1ea5c8ad2807175803aa513dc696d75fca6626ff))
+* add contentSection filter, increase limit to 50 ([53ab7f9](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/53ab7f9e30986d3ba8e936aeefbc7b2daac4df32))
+* add limit parameter to routes ([0d0e8c2](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/0d0e8c2202997533016beb5d7652174640c12ef2))
+* add profile id to watch history ([c4cd345](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/c4cd345a725eadf3ce9e6c80549599fd9a2227a5))
+* add profileId param to continue watching routes ([2c9d002](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/2c9d002dd59f69fe29349b47ca68eb3b0eb210f4))
+* allow deletion of specific continue watching items ([761a896](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/761a8963c05f3842a6fc2edb6ca7751ace0449d0))
+* **api:** add delete by content section and watched date ([29ab053](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/29ab0535716515ce850108608024e21ba63cdc13))
+* **api:** add doc to watch-session-api Docker image ([9244840](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/9244840cc7c5aedb4e4876bb5848bec2abd7bd03))
+* **api:** add error handling and response time tracking ([eda2db6](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/eda2db62a808b2a87c77183ab7bb90baae041148))
+* **api:** listing routes sort watched date in desc by default ([8d184df](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/8d184dfc30e803965789142ee1bf5824997151a7))
+* **api:** separate cdk stack and add watch session api example ([1803187](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/180318714b6af8a90034e098a7dc7cbf299a7b93))
+* **api:** update session management and validation ([1fe5c30](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/1fe5c306f05deac6782d1ce3c29714258bc862ba))
+* check session expiration before updating ([d2f8b5d](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/d2f8b5d25375a74d1f662861524e257e6eb1a7d8))
+* **docs:** update openapi from json to yaml and add logs for continue ([844851b](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/844851b2d0af62035e5851f3375a5fa5f96911dc))
+* **event:** forward event from default bus to custom bus ([8652c47](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/8652c4703eb9610613c212bbee7685d14d5b3d29))
+* merge branch ([74d0220](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/74d02207d89c94b6fb970258f34cb61a2da70878))
+* update API endpoints and add mediaVideoId ([72852e7](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/72852e770d908ae4ab3fcd07b9c88a0d60f731c9))
+* update releasesrc.json ([241e274](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/241e274c047902b1f3a2345760f5ed0fe0fc85df))
+* update semantic ([169dc51](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/169dc51123b9e58525ae8f5993cc7e3ee1ba7756))
+* update semantic version ([85b5ff8](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/85b5ff8e5f56cf9bd0ab691bb012e55b638dd3f0))
+* use requestBody in DELETE and add bulk delete ([a41ecb1](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/a41ecb16d50cff3bc6035cf3fcb5f3486aa220d4))
+* **watch-session:** add content section filtering ([52d18b2](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/52d18b20c043294566a2ef065fe883bd02347f47))
+* **watch-session:** add delete by watched date ([61acf71](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/61acf719764a6ef2faeae21387adf61ceb413d2f))
+
+# watch-session-service-api-v1.0.0 (2025-01-23)
+
+
+### Bug Fixes
+
+* **api:** change expirationTime type to unix timestamp ([c615203](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/c615203d0d2096e785bce601462a2aeac01e5a7f))
+* **api:** fix cannot create new session and improve exception handling ([bfcc3e8](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/bfcc3e82c2ed132bff98b299e47a62edf1237f5d))
+* **api:** fix cannot recreate terminated session ([09f1062](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/09f1062216cfbc8f0bb18bcf02c255cfa8d63da3))
+* **api:** fix watchedDate filter to delete history ([0ecf4c7](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/0ecf4c706334a3956b058ca85e923c51cce6c42c))
+* **api:** pass environment variable to docker build ([af998d5](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/af998d570cc5c82e8655b02617023034e96baa4a))
+* **api:** refactor session handling and validation ([9b2ecc4](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/9b2ecc45398f04d816aee2b37676936b27098ebe))
+* **db:** change delimiter from hyphen to hash ([d9deee5](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/d9deee5373c9144eaf26f264f31f986b8956c56f))
+* ensure unique session IDs across time ([42b805e](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/42b805e520841f410ba5f3633b2bef446da259eb))
+* error git tag name ([15c4c54](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/15c4c54b58710710fd98bf7eb9091fc179f24373))
+* filter completed items from continue watching ([63d076c](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/63d076cdbff96f17322f3c9830b00c15d838ad8a))
+* git tag format ([767bafd](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/767bafd0594a94979d37ed44948bedab5d296740))
+* package path ([eecc67d](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/eecc67d4a4134bbd73226cca6606a4f89d53ee4d))
+* return 404 for empty continue watching data ([3608b76](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/3608b76b5a3b46c7bb426ceebda70f2482505e40))
+* tag name ([12ff611](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/12ff61158cf20d502b89c07983f9dbf5dd10d09a))
+* test merge main ([97af96f](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/97af96f157c430b2d50561cd08dc08a516e07784))
+* test merge main ([3b01bdb](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/3b01bdbb826f0833ae423353d33f7db60cbb97e5))
+* test semantic version ([e98967c](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/e98967c14167f6c0f3f66045936f02119885372a))
+* test tag ([4ace4a4](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/4ace4a4b34563028fce2906f03f53afadebb2785))
+* update API base URL and add content section field ([9911fee](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/9911fee1a33b122eeb38cd70825d9977bd3f97c0))
+* update config semantic mono repo ([57853f6](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/57853f6011ee2c902da31bd436ffc9836a447a6a))
+* update package json ([04834bc](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/04834bc54d0dd700356802c27de375b5f8bc6263))
+* update version ([5c40cd1](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/5c40cd1e6e0f07dc60af871c69960bc4ebf5aee9))
+
+
+### Features
+
+* add content type and event type to watch history ([1ea5c8a](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/1ea5c8ad2807175803aa513dc696d75fca6626ff))
+* add contentSection filter, increase limit to 50 ([53ab7f9](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/53ab7f9e30986d3ba8e936aeefbc7b2daac4df32))
+* add limit parameter to routes ([0d0e8c2](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/0d0e8c2202997533016beb5d7652174640c12ef2))
+* add profile id to watch history ([c4cd345](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/c4cd345a725eadf3ce9e6c80549599fd9a2227a5))
+* add profileId param to continue watching routes ([2c9d002](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/2c9d002dd59f69fe29349b47ca68eb3b0eb210f4))
+* allow deletion of specific continue watching items ([761a896](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/761a8963c05f3842a6fc2edb6ca7751ace0449d0))
+* **api:** add delete by content section and watched date ([29ab053](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/29ab0535716515ce850108608024e21ba63cdc13))
+* **api:** add doc to watch-session-api Docker image ([9244840](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/9244840cc7c5aedb4e4876bb5848bec2abd7bd03))
+* **api:** add error handling and response time tracking ([eda2db6](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/eda2db62a808b2a87c77183ab7bb90baae041148))
+* **api:** listing routes sort watched date in desc by default ([8d184df](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/8d184dfc30e803965789142ee1bf5824997151a7))
+* **api:** separate cdk stack and add watch session api example ([1803187](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/180318714b6af8a90034e098a7dc7cbf299a7b93))
+* **api:** update session management and validation ([1fe5c30](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/1fe5c306f05deac6782d1ce3c29714258bc862ba))
+* check session expiration before updating ([d2f8b5d](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/d2f8b5d25375a74d1f662861524e257e6eb1a7d8))
+* **docs:** update openapi from json to yaml and add logs for continue ([844851b](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/844851b2d0af62035e5851f3375a5fa5f96911dc))
+* **event:** forward event from default bus to custom bus ([8652c47](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/8652c4703eb9610613c212bbee7685d14d5b3d29))
+* merge branch ([74d0220](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/74d02207d89c94b6fb970258f34cb61a2da70878))
+* update API endpoints and add mediaVideoId ([72852e7](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/72852e770d908ae4ab3fcd07b9c88a0d60f731c9))
+* update releasesrc.json ([241e274](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/241e274c047902b1f3a2345760f5ed0fe0fc85df))
+* update semantic ([169dc51](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/169dc51123b9e58525ae8f5993cc7e3ee1ba7756))
+* update semantic version ([85b5ff8](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/85b5ff8e5f56cf9bd0ab691bb012e55b638dd3f0))
+* use requestBody in DELETE and add bulk delete ([a41ecb1](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/a41ecb16d50cff3bc6035cf3fcb5f3486aa220d4))
+* **watch-session:** add content section filtering ([52d18b2](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/52d18b20c043294566a2ef065fe883bd02347f47))
+* **watch-session:** add delete by watched date ([61acf71](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/61acf719764a6ef2faeae21387adf61ceb413d2f))
+
+# watch-session-service-api-v1.0.0 (2025-01-23)
+
+
+### Bug Fixes
+
+* **api:** change expirationTime type to unix timestamp ([c615203](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/c615203d0d2096e785bce601462a2aeac01e5a7f))
+* **api:** fix cannot create new session and improve exception handling ([bfcc3e8](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/bfcc3e82c2ed132bff98b299e47a62edf1237f5d))
+* **api:** fix cannot recreate terminated session ([09f1062](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/09f1062216cfbc8f0bb18bcf02c255cfa8d63da3))
+* **api:** fix watchedDate filter to delete history ([0ecf4c7](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/0ecf4c706334a3956b058ca85e923c51cce6c42c))
+* **api:** pass environment variable to docker build ([af998d5](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/af998d570cc5c82e8655b02617023034e96baa4a))
+* **api:** refactor session handling and validation ([9b2ecc4](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/9b2ecc45398f04d816aee2b37676936b27098ebe))
+* **db:** change delimiter from hyphen to hash ([d9deee5](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/d9deee5373c9144eaf26f264f31f986b8956c56f))
+* ensure unique session IDs across time ([42b805e](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/42b805e520841f410ba5f3633b2bef446da259eb))
+* error git tag name ([15c4c54](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/15c4c54b58710710fd98bf7eb9091fc179f24373))
+* filter completed items from continue watching ([63d076c](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/63d076cdbff96f17322f3c9830b00c15d838ad8a))
+* git tag format ([767bafd](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/767bafd0594a94979d37ed44948bedab5d296740))
+* package path ([eecc67d](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/eecc67d4a4134bbd73226cca6606a4f89d53ee4d))
+* return 404 for empty continue watching data ([3608b76](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/3608b76b5a3b46c7bb426ceebda70f2482505e40))
+* tag name ([12ff611](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/12ff61158cf20d502b89c07983f9dbf5dd10d09a))
+* test merge main ([97af96f](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/97af96f157c430b2d50561cd08dc08a516e07784))
+* test merge main ([3b01bdb](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/3b01bdbb826f0833ae423353d33f7db60cbb97e5))
+* test semantic version ([e98967c](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/e98967c14167f6c0f3f66045936f02119885372a))
+* test tag ([4ace4a4](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/4ace4a4b34563028fce2906f03f53afadebb2785))
+* update API base URL and add content section field ([9911fee](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/9911fee1a33b122eeb38cd70825d9977bd3f97c0))
+* update config semantic mono repo ([57853f6](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/57853f6011ee2c902da31bd436ffc9836a447a6a))
+* update package json ([04834bc](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/04834bc54d0dd700356802c27de375b5f8bc6263))
+* update version ([5c40cd1](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/5c40cd1e6e0f07dc60af871c69960bc4ebf5aee9))
+
+
+### Features
+
+* add content type and event type to watch history ([1ea5c8a](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/1ea5c8ad2807175803aa513dc696d75fca6626ff))
+* add contentSection filter, increase limit to 50 ([53ab7f9](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/53ab7f9e30986d3ba8e936aeefbc7b2daac4df32))
+* add limit parameter to routes ([0d0e8c2](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/0d0e8c2202997533016beb5d7652174640c12ef2))
+* add profile id to watch history ([c4cd345](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/c4cd345a725eadf3ce9e6c80549599fd9a2227a5))
+* add profileId param to continue watching routes ([2c9d002](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/2c9d002dd59f69fe29349b47ca68eb3b0eb210f4))
+* allow deletion of specific continue watching items ([761a896](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/761a8963c05f3842a6fc2edb6ca7751ace0449d0))
+* **api:** add delete by content section and watched date ([29ab053](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/29ab0535716515ce850108608024e21ba63cdc13))
+* **api:** add doc to watch-session-api Docker image ([9244840](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/9244840cc7c5aedb4e4876bb5848bec2abd7bd03))
+* **api:** add error handling and response time tracking ([eda2db6](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/eda2db62a808b2a87c77183ab7bb90baae041148))
+* **api:** listing routes sort watched date in desc by default ([8d184df](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/8d184dfc30e803965789142ee1bf5824997151a7))
+* **api:** separate cdk stack and add watch session api example ([1803187](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/180318714b6af8a90034e098a7dc7cbf299a7b93))
+* **api:** update session management and validation ([1fe5c30](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/1fe5c306f05deac6782d1ce3c29714258bc862ba))
+* check session expiration before updating ([d2f8b5d](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/d2f8b5d25375a74d1f662861524e257e6eb1a7d8))
+* **docs:** update openapi from json to yaml and add logs for continue ([844851b](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/844851b2d0af62035e5851f3375a5fa5f96911dc))
+* **event:** forward event from default bus to custom bus ([8652c47](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/8652c4703eb9610613c212bbee7685d14d5b3d29))
+* merge branch ([74d0220](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/74d02207d89c94b6fb970258f34cb61a2da70878))
+* update API endpoints and add mediaVideoId ([72852e7](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/72852e770d908ae4ab3fcd07b9c88a0d60f731c9))
+* update releasesrc.json ([241e274](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/241e274c047902b1f3a2345760f5ed0fe0fc85df))
+* update semantic ([169dc51](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/169dc51123b9e58525ae8f5993cc7e3ee1ba7756))
+* update semantic version ([85b5ff8](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/85b5ff8e5f56cf9bd0ab691bb012e55b638dd3f0))
+* use requestBody in DELETE and add bulk delete ([a41ecb1](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/a41ecb16d50cff3bc6035cf3fcb5f3486aa220d4))
+* **watch-session:** add content section filtering ([52d18b2](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/52d18b20c043294566a2ef065fe883bd02347f47))
+* **watch-session:** add delete by watched date ([61acf71](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/61acf719764a6ef2faeae21387adf61ceb413d2f))
+
+# [watch-session-service-api-v1.0.1](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/compare/api-1.0.0...api-1.0.1) (2025-01-23)
+
+
+### Bug Fixes
+
+* test tag ([4ace4a4](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/4ace4a4b34563028fce2906f03f53afadebb2785))
+
+# watch-session-service-api-v1.0.0 (2025-01-23)
+
+
+### Bug Fixes
+
+* **api:** change expirationTime type to unix timestamp ([c615203](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/c615203d0d2096e785bce601462a2aeac01e5a7f))
+* **api:** fix cannot create new session and improve exception handling ([bfcc3e8](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/bfcc3e82c2ed132bff98b299e47a62edf1237f5d))
+* **api:** fix cannot recreate terminated session ([09f1062](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/09f1062216cfbc8f0bb18bcf02c255cfa8d63da3))
+* **api:** fix watchedDate filter to delete history ([0ecf4c7](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/0ecf4c706334a3956b058ca85e923c51cce6c42c))
+* **api:** pass environment variable to docker build ([af998d5](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/af998d570cc5c82e8655b02617023034e96baa4a))
+* **api:** refactor session handling and validation ([9b2ecc4](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/9b2ecc45398f04d816aee2b37676936b27098ebe))
+* **db:** change delimiter from hyphen to hash ([d9deee5](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/d9deee5373c9144eaf26f264f31f986b8956c56f))
+* ensure unique session IDs across time ([42b805e](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/42b805e520841f410ba5f3633b2bef446da259eb))
+* error git tag name ([15c4c54](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/15c4c54b58710710fd98bf7eb9091fc179f24373))
+* filter completed items from continue watching ([63d076c](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/63d076cdbff96f17322f3c9830b00c15d838ad8a))
+* git tag format ([767bafd](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/767bafd0594a94979d37ed44948bedab5d296740))
+* package path ([eecc67d](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/eecc67d4a4134bbd73226cca6606a4f89d53ee4d))
+* return 404 for empty continue watching data ([3608b76](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/3608b76b5a3b46c7bb426ceebda70f2482505e40))
+* tag name ([12ff611](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/12ff61158cf20d502b89c07983f9dbf5dd10d09a))
+* test merge main ([97af96f](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/97af96f157c430b2d50561cd08dc08a516e07784))
+* test merge main ([3b01bdb](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/3b01bdbb826f0833ae423353d33f7db60cbb97e5))
+* test semantic version ([e98967c](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/e98967c14167f6c0f3f66045936f02119885372a))
+* update API base URL and add content section field ([9911fee](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/9911fee1a33b122eeb38cd70825d9977bd3f97c0))
+* update config semantic mono repo ([57853f6](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/57853f6011ee2c902da31bd436ffc9836a447a6a))
+* update package json ([04834bc](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/04834bc54d0dd700356802c27de375b5f8bc6263))
+* update version ([5c40cd1](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/5c40cd1e6e0f07dc60af871c69960bc4ebf5aee9))
+
+
+### Features
+
+* add content type and event type to watch history ([1ea5c8a](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/1ea5c8ad2807175803aa513dc696d75fca6626ff))
+* add contentSection filter, increase limit to 50 ([53ab7f9](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/53ab7f9e30986d3ba8e936aeefbc7b2daac4df32))
+* add limit parameter to routes ([0d0e8c2](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/0d0e8c2202997533016beb5d7652174640c12ef2))
+* add profile id to watch history ([c4cd345](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/c4cd345a725eadf3ce9e6c80549599fd9a2227a5))
+* add profileId param to continue watching routes ([2c9d002](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/2c9d002dd59f69fe29349b47ca68eb3b0eb210f4))
+* allow deletion of specific continue watching items ([761a896](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/761a8963c05f3842a6fc2edb6ca7751ace0449d0))
+* **api:** add delete by content section and watched date ([29ab053](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/29ab0535716515ce850108608024e21ba63cdc13))
+* **api:** add doc to watch-session-api Docker image ([9244840](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/9244840cc7c5aedb4e4876bb5848bec2abd7bd03))
+* **api:** add error handling and response time tracking ([eda2db6](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/eda2db62a808b2a87c77183ab7bb90baae041148))
+* **api:** listing routes sort watched date in desc by default ([8d184df](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/8d184dfc30e803965789142ee1bf5824997151a7))
+* **api:** separate cdk stack and add watch session api example ([1803187](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/180318714b6af8a90034e098a7dc7cbf299a7b93))
+* **api:** update session management and validation ([1fe5c30](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/1fe5c306f05deac6782d1ce3c29714258bc862ba))
+* check session expiration before updating ([d2f8b5d](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/d2f8b5d25375a74d1f662861524e257e6eb1a7d8))
+* **docs:** update openapi from json to yaml and add logs for continue ([844851b](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/844851b2d0af62035e5851f3375a5fa5f96911dc))
+* **event:** forward event from default bus to custom bus ([8652c47](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/8652c4703eb9610613c212bbee7685d14d5b3d29))
+* merge branch ([74d0220](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/74d02207d89c94b6fb970258f34cb61a2da70878))
+* update API endpoints and add mediaVideoId ([72852e7](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/72852e770d908ae4ab3fcd07b9c88a0d60f731c9))
+* update releasesrc.json ([241e274](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/241e274c047902b1f3a2345760f5ed0fe0fc85df))
+* update semantic ([169dc51](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/169dc51123b9e58525ae8f5993cc7e3ee1ba7756))
+* update semantic version ([85b5ff8](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/85b5ff8e5f56cf9bd0ab691bb012e55b638dd3f0))
+* use requestBody in DELETE and add bulk delete ([a41ecb1](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/a41ecb16d50cff3bc6035cf3fcb5f3486aa220d4))
+* **watch-session:** add content section filtering ([52d18b2](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/52d18b20c043294566a2ef065fe883bd02347f47))
+* **watch-session:** add delete by watched date ([61acf71](https://gitlab.com/bbtvnewmedia/superapp/watch-session-service/commit/61acf719764a6ef2faeae21387adf61ceb413d2f))

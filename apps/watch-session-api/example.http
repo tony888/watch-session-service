@@ -1,0 +1,148 @@
+@baseUrl = http://localhost:3000
+@userId = f1ddc02c-120a-4904-8ea6-cd87b58e01a3
+@sessionId = 1086776b-6d42-4067-b80c-9d5c14f4ba7a
+@profileId = 38f3a5b2-714a-4a29-9b04-2d2860e135ab
+@contentId = ff7f8b3e-152a-413e-99c7-71bd8453fd18
+@historyId = 661e04f9-49f3-4c45-92b1-0253cf23e153
+@mediaVideoId = 123e4567-e89b-12d3-a456-426614174000
+
+### Health Check
+GET {{baseUrl}}/health
+
+### Root endpoint
+GET {{baseUrl}}/
+
+### Session Routes ###
+
+### Start a new session
+POST {{baseUrl}}/api/sessions/start
+Content-Type: application/json
+User-Agent: test-user-agent
+
+{
+    "userId": "{{userId}}",
+    "profileId": "{{profileId}}",
+    "contentId": "{{contentId}}"
+}
+
+### Get session by ID
+GET {{baseUrl}}/api/sessions/{{sessionId}}
+
+### Get session count for user
+GET {{baseUrl}}/api/sessions/count?userId={{userId}}
+
+### List all sessions for user
+GET {{baseUrl}}/api/sessions?userId={{userId}}
+
+### Update session
+PUT {{baseUrl}}/api/sessions/{{sessionId}}
+Content-Type: application/json
+
+{
+    "userId": "{{userId}}",
+    "contentId": "44b16fc2-a3de-4ff6-bcdd-5e7104a40891"
+}
+
+### Terminate session
+DELETE {{baseUrl}}/api/sessions/{{sessionId}}
+
+### History Routes ###
+
+### Get all watch history for a user
+GET {{baseUrl}}/api/watch-histories?userId={{userId}}&profileId={{profileId}}
+
+### Get history by ID
+GET {{baseUrl}}/api/watch-histories?userId={{userId}}&profileId={{profileId}}&contentId={{historyId}}
+
+### Get history filtered by baseSection
+GET {{baseUrl}}/api/watch-histories?userId={{userId}}&profileId={{profileId}}&baseSection=season1
+
+### Get history with multiple baseSections
+GET {{baseUrl}}/api/watch-histories?userId={{userId}}&profileId={{profileId}}&baseSection=season1&baseSection=season2
+
+### Get history filtered by contentSection and baseSection
+GET {{baseUrl}}/api/watch-histories?userId={{userId}}&profileId={{profileId}}&contentSection=episode5&baseSection=season1
+
+### Create watch history with baseSection
+POST {{baseUrl}}/api/watch-histories
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "profileId": "{{profileId}}",
+  "contentId": "{{contentId}}",
+  "mediaVideoId": "{{mediaVideoId}}",
+  "contentSection": "episode1",
+  "baseSection": "season1",
+  "progress": "14.5"
+}
+
+### Delete history by contentId
+DELETE {{baseUrl}}/api/watch-histories
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "profileId": "{{profileId}}",
+  "contentId": "{{historyId}}"
+}
+
+### Delete history by baseSection 
+DELETE {{baseUrl}}/api/watch-histories
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "profileId": "{{profileId}}",
+  "baseSection": "season1"
+}
+
+### Delete history by multiple baseSections
+DELETE {{baseUrl}}/api/watch-histories
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "profileId": "{{profileId}}",
+  "baseSection": ["season1", "season2"]
+}
+
+### Continue Routes ###
+
+### Get continue watching list
+GET {{baseUrl}}/api/continue-watchings?userId={{userId}}&profileId={{profileId}}
+
+### Get continue watching item by contentId
+GET {{baseUrl}}/api/continue-watchings?userId={{userId}}&profileId={{profileId}}&contentId={{contentId}}
+
+### Get continue watching item by mediaVideoId
+GET {{baseUrl}}/api/continue-watchings?userId={{userId}}&profileId={{profileId}}&contentId={{contentId}}&mediaVideoId={{mediaVideoId}}
+
+### Get continue watching filtered by baseSection
+GET {{baseUrl}}/api/continue-watchings?userId={{userId}}&profileId={{profileId}}&baseSection=movie
+
+### Get continue watching with multiple baseSections
+GET {{baseUrl}}/api/continue-watchings?userId={{userId}}&profileId={{profileId}}&baseSection=movie&baseSection=tvshow
+
+### Create continue watching with baseSection
+POST {{baseUrl}}/api/continue-watchings
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "profileId": "{{profileId}}",
+  "contentId": "{{contentId}}",
+  "mediaVideoId": "{{mediaVideoId}}",
+  "progress": "29.8",
+  "baseSection": "movie"
+}
+
+### Delete continue watching by baseSection
+DELETE {{baseUrl}}/api/continue-watchings
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "profileId": "{{profileId}}",
+  "baseSection": "movie"
+}

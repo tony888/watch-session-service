@@ -1,0 +1,6 @@
+{
+  "name": "@app/lambda",
+  "dependencies": {
+    "esbuild": "^0.24.0"
+  }
+}

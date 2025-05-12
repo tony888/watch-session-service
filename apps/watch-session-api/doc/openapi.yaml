@@ -1,0 +1,858 @@
+openapi: 3.1.0
+info:
+  title: Watch Session API
+  version: 1.0.0
+  description: API for managing watch sessions, continue watching, and history.
+servers:
+  - url: /
+    description: Local development server
+paths:
+  /api/sessions:
+    get:
+      tags:
+        - Sessions
+      summary: List all sessions for user
+      description: Retrieve all sessions for a user
+      operationId: listSessions
+      parameters:
+        - name: userId
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Sessions retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Sessions retrieved successfully
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Session"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Content ID and Media Video ID must be provided together
+        "429":
+          description: Too many concurrent sessions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Maximum concurrent sessions reached
+                  error:
+                    type: string
+                    example: MAX_CONCURRENT_SESSIONS_REACHED
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Internal server error
+    post:
+      tags:
+        - Sessions
+      summary: Start a new session
+      description: Start a new session for a user
+      operationId: startSession
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: string
+                  format: uuid
+                  description: User ID
+                profileId:
+                  type: string
+                  format: uuid
+                  description: Profile ID
+                contentId:
+                  type: string
+                  format: uuid
+                  description: Content ID
+                userAgent:
+                  type: string
+                  description: User agent string
+                membershipType:
+                  type: string
+                  description: Membership type (optional)
+              required:
+                - userId
+                - profileId
+                - contentId
+                - userAgent
+      responses:
+        "201":
+          description: Session started successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Session successfully started
+                  data:
+                    $ref: "#/components/schemas/Session"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: User-Agent is required
+                  error:
+                    type: string
+                    example: USER_AGENT_REQUIRED
+        "409":
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Session already exists
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Internal server error
+  /api/sessions/{sessionId}:
+    get:
+      tags:
+        - Sessions
+      summary: Get session by ID
+      description: Retrieve a session by its ID
+      operationId: getSessionById
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Session retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Session retrieved successfully
+                  data:
+                    $ref: "#/components/schemas/Session"
+        "404":
+          description: Session not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Session not found
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Internal server error
+    put:
+      tags:
+        - Sessions
+      summary: Update session
+      description: Update a session by its ID
+      operationId: updateSession
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: string
+                  format: uuid
+                  description: User ID
+                profileId:
+                  type: string
+                  format: uuid
+                  description: Profile ID
+                contentId:
+                  type: string
+                  format: uuid
+                  description: Content ID
+                  nullable: true
+                membershipType:
+                  type: string
+                  description: Membership type
+                  nullable: true
+              required:
+                - userId
+                - profileId
+      responses:
+        "200":
+          description: Session updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Session updated successfully
+                  data:
+                    $ref: "#/components/schemas/Session"
+        "404":
+          description: Session not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Session not found
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Internal server error
+    delete:
+      tags:
+        - Sessions
+      summary: Terminate session
+      description: Terminate a session by its ID
+      operationId: terminateSession
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Session terminated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Session terminated successfully
+                  data:
+                    type: object
+                    properties:
+                      sessionId:
+                        type: string
+                        format: uuid
+                        description: Session ID
+        "404":
+          description: Session not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Session not found
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Internal server error
+  /api/sessions/count:
+    get:
+      tags:
+        - Sessions
+      summary: Get session count for user
+      description: Retrieve the count of sessions for a user
+      operationId: getSessionCount
+      parameters:
+        - name: userId
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Session count retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Session count retrieved successfully
+                  data:
+                    type: object
+                    properties:
+                      maxSessions:
+                        type: integer
+                        description: Maximum number of concurrent sessions
+                      currentSessions:
+                        type: integer
+                        description: Current number of sessions
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Internal server error
+  /api/watch-histories:
+    get:
+      tags:
+        - Watch Histories
+      summary: Get watch history
+      description: Retrieve watch history for a user and profile
+      operationId: getWatchHistory
+      parameters:
+        - name: userId
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: profileId
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: contentId
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uuid
+        - name: contentSection
+          in: query
+          required: false
+          schema:
+            oneOf:
+              - type: string
+              - type: array
+                items:
+                  type: string
+          description: Optional ContentSection to filter by specific section
+        - name: baseSection
+          in: query
+          required: false
+          schema:
+            oneOf:
+              - type: string
+              - type: array
+                items:
+                  type: string
+          description: Optional BaseSection to filter by specific base section
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 50
+      responses:
+        "200":
+          description: History retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Retrieved history successfully
+                  data:
+                    oneOf:
+                      - type: array
+                        items:
+                          $ref: "#/components/schemas/WatchHistory"
+                      - $ref: "#/components/schemas/WatchHistory"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: User ID is required
+                  error:
+                    type: string
+                    example: USER_ID_REQUIRED
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: No history found
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Internal server error
+    delete:
+      tags:
+        - Watch Histories
+      summary: Delete watch history
+      description: Delete watch history for a user and content ID
+      operationId: deleteWatchHistory
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: string
+                  format: uuid
+                  description: User ID (Required)
+                profileId:
+                  type: string
+                  format: uuid
+                  description: Profile ID (Required)
+                contentId:
+                  type: string
+                  format: uuid
+                  description: Content ID (Optional)
+                contentSection:
+                  type: string
+                  format: text
+                  description: Content Section (Optional)
+                baseSection:
+                  type: string
+                  format: text
+                  description: Base Section (Optional)
+                watchedDate:
+                  type: string
+                  format: date
+                  description: Watched Date (YYYY-MM-DD)
+              required:
+                - userId
+                - profileId
+      responses:
+        "200":
+          description: History deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Deleted history successfully
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: User ID is required
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: No history found
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Internal server error
+  /api/continue-watchings:
+    get:
+      tags:
+        - Continue Watchings
+      summary: Get continue watching list
+      description: Retrieve continue watching list for a user
+      operationId: getContinueWatching
+      parameters:
+        - name: userId
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: User ID (Required)
+        - name: profileId
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: Profile ID (Required)
+        - name: contentId
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Optional Content ID to filter by specific content
+        - name: mediaVideoId
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Optional Media Video ID to filter by specific video
+        - name: contentSection
+          in: query
+          required: false
+          schema:
+            oneOf:
+              - type: string
+              - type: array
+                items:
+                  type: string
+          description: Optional ContentSection to filter by specific section(s)
+        - name: baseSection
+          in: query
+          required: false
+          schema:
+            oneOf:
+              - type: string
+              - type: array
+                items:
+                  type: string
+          description: Optional BaseSection to filter by specific section(s)
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 50
+      responses:
+        "200":
+          description: Continue watching list retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Retrieved continue watching
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/ContinueWatching"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: User ID is required
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: No continue watching data found
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Internal server error
+    delete:
+      tags:
+        - Continue Watchings
+      summary: Delete continue watching items
+      description: Delete continue watching items for a user and profile. If both contentId and mediaVideoId are provided, deletes specific item. If neither is provided, deletes all items.
+      operationId: deleteContinueWatching
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: string
+                  format: uuid
+                  description: User ID (Required)
+                profileId:
+                  type: string
+                  format: uuid
+                  description: Profile ID (Required)
+                contentId:
+                  type: string
+                  format: uuid
+                  description: Content ID (Required with mediaVideoId)
+                mediaVideoId:
+                  type: string
+                  format: uuid
+                  description: Media Video ID (Required with contentId)
+                watchedDate:
+                  type: string
+                  format: date
+                  description: Watched Date (YYYY-MM-DD)
+                contentSection:
+                  type: string
+                  format: text
+                  description: Content Section (Optional)
+                baseSection:
+                  type: string
+                  format: text
+                  description: Base Section (Optional)
+              required:
+                - userId
+                - profileId
+      responses:
+        "200":
+          description: Continue watching items deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Delete success
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: User ID is required
+components:
+  schemas:
+    Session:
+      type: object
+      required:
+        - sessionId
+        - userId
+        - profileId
+        - deviceId
+        - startTime
+        - sessionState
+        - expirationTime
+        - isActive
+      properties:
+        sessionId:
+          type: string
+          format: uuid
+          description: Session ID
+        userId:
+          type: string
+          format: uuid
+          description: User ID
+        profileId:
+          type: string
+          format: uuid
+          description: Profile ID
+        contentId:
+          type: string
+          format: uuid
+          description: Content ID
+          nullable: true
+        deviceId:
+          type: string
+          description: Device ID
+        membershipType:
+          type: string
+          description: Membership Type
+        startTime:
+          type: string
+          format: date-time
+          description: Start Time
+        sessionState:
+          type: string
+          enum: ["ACTIVE", "TERMINATED"]
+          description: Session State
+        expirationTime:
+          type: string
+          format: date-time
+          description: Expiration Time
+        isActive:
+          type: boolean
+          description: Whether the session is currently active
+    WatchHistory:
+      type: object
+      required:
+        - userId
+        - profileId
+        - contentId
+        - mediaVideoId
+        - progress
+        - watchedDate
+      properties:
+        userId:
+          type: string
+          format: uuid
+          description: User ID
+        profileId:
+          type: string
+          format: uuid
+          description: Profile ID
+        contentId:
+          type: string
+          format: uuid
+          description: Content ID
+        mediaVideoId:
+          type: string
+          format: uuid
+          description: Media Video ID
+        contentSection:
+          type: string
+          description: Content Section
+        baseSection:
+          type: string
+          description: Base Section identifying the main category (e.g., season, series, etc.)
+        progress:
+          type: string
+          description: Viewing progress percentage (0-100)
+        watchedDate:
+          type: string
+          format: date-time
+          description: Watched Date
+    ContinueWatching:
+      type: object
+      required:
+        - userId
+        - profileId
+        - contentId
+        - mediaVideoId
+        - progress
+        - updatedAt
+        - createdAt
+      properties:
+        userId:
+          type: string
+          format: uuid
+          description: User ID
+        contentId:
+          type: string
+          format: uuid
+          description: Content ID
+        mediaVideoId:
+          type: string
+          format: uuid
+          description: Media Video ID
+        contentSection:
+          type: string
+          description: Content Section
+        baseSection:
+          type: string
+          description: Base Section
+        progress:
+          type: string
+          description: Progress
+        updatedAt:
+          type: string
+          format: date-time
+          description: Updated At
+        createdAt:
+          type: string
+          format: date-time
+          description: Created At

@@ -1,0 +1,2 @@
+export const MAX_CONCURRENT_SESSIONS = 1;
+export const COMPLETED_THRESHOLD = 99;
