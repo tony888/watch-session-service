@@ -45,3 +45,5 @@ out/
 
 # SAM CLI
 .aws-sam/
+
+VALIDATION_IMPLEMENTATION.md
